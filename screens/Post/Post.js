@@ -1,318 +1,272 @@
-// import { useState, useEffect } from 'react';
-// import { Text, View, Pressable, ScrollView, StyleSheet } from 'react-native';
-// import { Button, Card, Avatar, IconButton } from 'react-native-paper';
-// import SignOut from '../../components/modal/SignOut';
+// // import { useState, useEffect } from 'react';
+import { Button, Card, Avatar, IconButton } from 'react-native-paper';
+import SignOut from '../../components/modal/SignOut';
 
+import { Text, View, ScrollView, Pressable, StyleSheet } from "react-native";
+import Icon from 'react-native-vector-icons/FontAwesome5'
+import Iconll from 'react-native-vector-icons/AntDesign'
+
+
+
+// import React, { useState, useEffect, useRef } from 'react';
+// import { Text, View, ScrollView, StyleSheet } from 'react-native';
+// import { Card, Avatar } from 'react-native-paper';
+// import axios from 'axios';
 
 // export default function Post() {
-//     const [postdata, setPostData] = useState('');
+//     const [postdata, setPostData] = useState([]);
+//     const [userName, setUserName] = useState('Dummy');
+//     const [pageNumber, setPageNumber] = useState(1);
+//     const scrollViewRef = useRef(null);
+
 //     useEffect(() => {
-//         console.log('init');
 //         getData();
-//         console.log('effect');
-//     }, [])
-//     // const BaseUrl = 'http://192.168.100.87:3000/api/post/get/1'
-//     const BaseUrl = 'http://localhost:8000/data'        //local json server
-//     function getData() {
-//         fetch(BaseUrl)
-//             .then((res) => {
-//                 if (!res.ok) {
-//                     console.log('Error Encounterd');
+//         fetchUserName();
+//     }, []);
 
-//                 } else {
-//                     console.log("promise bhanda agi ko log");
-//                     // console.log(res);
-//                     return res.json();
-//                 }
-//             }
-//             )
-//             .then(data => {
-//                 console.log('Check incoming');
-//                 console.log(data);
-//                 setPostData(data);
-//             }).catch(
-//                 console.log('Error aayo k!!!')
-//             )
-//     }
-//     console.log('test');
-//     console.log(postdata);
+//     const BaseUrl = `http://localhost:8000/data?page=${pageNumber}&limit=10`;
 
+//     // function getData() {
+//     //     axios.get(BaseUrl)
+//     //         .then(response => {
+//     //             setPostData(prevData => [...prevData, ...response.data]);
+//     //         })
+//     //         .catch(error => {
+//     //             console.error('Error fetching data:', error);
+//     //         });
+//     // }
+
+//     // function fetchUserName() {
+//     //     axios.get('https://api.example.com/user')
+//     //         .then(response => {
+//     //             const userFirstName = response.data.firstName;
+//     //             setUserName(userFirstName);
+//     //         })
+//     //         .catch(error => {
+//     //             console.error('Error fetching user data:', error);
+//     //         });
+//     // }
+
+//     const handleScroll = (event) => {
+//         const { layoutMeasurement, contentOffset, contentSize } = event.nativeEvent;
+//         const paddingToBottom = 20;
+//         if (layoutMeasurement.height + contentOffset.y >= contentSize.height - paddingToBottom) {
+//             setPageNumber(prevPageNumber => prevPageNumber + 1);
+//             getData();
+//         }
+//     };
 
 //     return (
-//         <>
-//             <ScrollView contentContainerStyle={styles.PostContainer}>
-//                 <Card style={styles.Post} >
-//                     <View style={styles.postTop}>
-
-//                         <View style={styles.dpName}>
-//                             <Avatar.Image size={32} source={require('../../assets/img/mydp.png')} />
-//                             <Text style={styles.Name}>Dummy Bahadur </Text>
-//                         </View>
-//                         <Pressable onPress={() =>
-//                             // console.log('her bhai')
-//                             <SignOut />
-//                         }>
-//                             <Avatar.Text size={28} label="!" />
-//                         </Pressable>
+//         <ScrollView
+//             ref={scrollViewRef}
+//             contentContainerStyle={styles.PostContainer}
+//             onScroll={handleScroll}
+//             scrollEventThrottle={16}
+//         >
+//             {postdata.map((post, index) => (
+//                 <Card key={index} style={styles.Post}>
+//                     <View style={styles.dpName}>
+//                         <Avatar.Image size={32} source={require('../../assets/img/mydp.png')} />
+//                         <Text style={styles.Name}>
+//                             \jzlkx
+//                             {/* {userName} */}
+//                         </Text>
 //                     </View>
-//                     <Card.Content>
-//                         <Text variant="titleLarge" style={styles.caption}>I am having problem on the left side of my chest. I am coughing hard and sometimes I can see some bloods too. I have been taking xyz medicine for last 5 days.</Text>
-//                     </Card.Content>
 
-//                     <Card.Cover source={{ uri: 'https://picsum.photos/700' }} />
-//                     <Card.Actions >
-//                         <View style={styles.Interactive}>
-//                             <Button style={styles.Button}>Like</Button>
-//                             <Button style={styles.Button}>Comment</Button>
-//                             <Button style={styles.Button}>Share</Button>
-//                         </View>
-//                     </Card.Actions>
+//                     {/* <Text>{post.title}</Text>
+//                     <Text>{post.description}</Text> */}
 //                 </Card>
-//                 <Card style={styles.Post} >
-//                     <View style={styles.postTop}>
-
-//                         <View style={styles.dpName}>
-//                             <Avatar.Image size={32} source={require('../../assets/img/mydp.png')} />
-//                             <Text style={styles.Name}>Dummy Bahadur </Text>
-//                         </View>
-//                         <Pressable onPress={() =>
-//                             // console.log('her bhai')
-//                             <SignOut />
-//                         }>
-//                             <Avatar.Text size={28} label="!" />
-//                         </Pressable>
-//                     </View>
-//                     <Card.Content>
-//                         <Text variant="titleLarge" style={styles.caption}>I am having problem on the left side of my chest. I am coughing hard and sometimes I can see some bloods too. I have been taking xyz medicine for last 5 days.</Text>
-//                     </Card.Content>
-
-//                     <Card.Cover source={{ uri: 'https://picsum.photos/700' }} />
-//                     <Card.Actions >
-//                         <View style={styles.Interactive}>
-//                             <Button style={styles.Button}>Like</Button>
-//                             <Button style={styles.Button}>Comment</Button>
-//                             <Button style={styles.Button}>Share</Button>
-//                         </View>
-//                     </Card.Actions>
-//                 </Card>
-//                 <Card style={styles.Post} >
-//                     <View style={styles.postTop}>
-
-//                         <View style={styles.dpName}>
-//                             <Avatar.Image size={32} source={require('../../assets/img/mydp.png')} />
-//                             <Text style={styles.Name}>Dummy Bahadur </Text>
-//                         </View>
-//                         <Pressable onPress={() =>
-//                             // console.log('her bhai')
-//                             <SignOut />
-//                         }>
-//                             <Avatar.Text size={28} label="!" />
-//                         </Pressable>
-//                     </View>
-//                     <Card.Content>
-//                         <Text variant="titleLarge" style={styles.caption}>I am having problem on the left side of my chest. I am coughing hard and sometimes I can see some bloods too. I have been taking xyz medicine for last 5 days.</Text>
-//                     </Card.Content>
-
-//                     <Card.Cover source={{ uri: 'https://picsum.photos/700' }} />
-//                     <Card.Actions >
-//                         <View style={styles.Interactive}>
-//                             <Button style={styles.Button}>Like</Button>
-//                             <Button style={styles.Button}>Comment</Button>
-//                             <Button style={styles.Button}>Share</Button>
-//                         </View>
-//                     </Card.Actions>
-//                 </Card>
-//             </ScrollView>
-
-//         </>
-//     )
+//             ))}
+//         </ScrollView>
+//     );
 // }
 
-// const styles = StyleSheet.create({
-//     PostContainer: {
-//         width: '100%',
-//         backgroundColor: 'white',
-//         flexDirection: 'column',
-//         justifyContent: 'center',
-//     },
-//     Post: {
-//         padding: 10,
-//         height: 'auto',
-//         width: "100%",
-//         backgroundColor: '#d9d9d9',
-//         justifyContent: 'center',
-//         marginTop: 5,
-//         marginBottom: 5,
-//     },
-//     postTop: {
-//         height: 40,
-//         // backgroundColor:'red',
-//         justifyContent: 'space-between',
-//         flexDirection: 'row',
-//     },
-//     dpName: {
-//         width: "40%",
-//         flexDirection: 'row',
-//         alignItems: 'center',
-//         justifyContent: 'space-between',
-//         borderBottomWidth: 1,
-//         borderBottomColor: 'red',
-//         borderBottomLeftRadius: 20,
-//         borderTopLeftRadius: 20,
-//     },
-//     caption: {
-//         height: 'auto',
-//         color: 'black',
-//         marginTop: 10,
-//         marginBottom: 10,
-//     },
-//     Name: {
-//         color: 'black',
-//     },
-//     Interactive: {
-//         width: '100%',
-//         // backgroundColor: 'red',
-//         flexDirection: 'row',
-//         justifyContent: 'space-around',
-//         alignItems: 'center',
-//         paddingHorizontal: 10,
-//         paddingVertical: 5,
-//     },
-//     // Button: {
-//     //     backgroundColor: 'grey',
-//     //     height: 40,
-//     //     width: 110,
-//     //     borderRadius: 20,
-//     // },
-//     container: {
-//         flex: 1,
-//         justifyContent: 'center',
-//         paddingHorizontal: 10,
-//     },
-//     button: {
-//         alignItems: 'center',
-//         backgroundColor: 'red',
-//         padding: 10,
-//     },
-//     countContainer: {
-//         alignItems: 'center',
-//         padding: 10,
-//     },
-// })
 
+const Post = () => {
+    return (<>
 
-
-
-
-import React, { useState, useEffect, useRef } from 'react';
-import { Text, View, ScrollView, StyleSheet } from 'react-native';
-import { Card, Avatar } from 'react-native-paper';
-import axios from 'axios';
-
-export default function Post() {
-    const [postdata, setPostData] = useState([]);
-    const [userName, setUserName] = useState('Dummy');
-    const [pageNumber, setPageNumber] = useState(1);
-    const scrollViewRef = useRef(null);
-
-    useEffect(() => {
-        getData();
-        fetchUserName();
-    }, []);
-
-    const BaseUrl = `http://localhost:8000/data?page=${pageNumber}&limit=10`;
-
-    function getData() {
-        axios.get(BaseUrl)
-            .then(response => {
-                setPostData(prevData => [...prevData, ...response.data]);
-            })
-            .catch(error => {
-                console.error('Error fetching data:', error);
-            });
-    }
-
-    function fetchUserName() {
-        axios.get('https://api.example.com/user')
-            .then(response => {
-                const userFirstName = response.data.firstName;
-                setUserName(userFirstName);
-            })
-            .catch(error => {
-                console.error('Error fetching user data:', error);
-            });
-    }
-
-    const handleScroll = (event) => {
-        const { layoutMeasurement, contentOffset, contentSize } = event.nativeEvent;
-        const paddingToBottom = 20;
-        if (layoutMeasurement.height + contentOffset.y >= contentSize.height - paddingToBottom) {
-            setPageNumber(prevPageNumber => prevPageNumber + 1);
-            getData();
-        }
-    };
-
-    return (
-        <ScrollView
-            ref={scrollViewRef}
-            contentContainerStyle={styles.PostContainer}
-            onScroll={handleScroll}
-            scrollEventThrottle={16}
-        >
-            {postdata.map((post, index) => (
-                <Card key={index} style={styles.Post}>
+        <ScrollView contentContainerStyle={styles.PostContainer}>
+            <Card style={styles.Post} >
+                <View style={styles.postTop}>
                     <View style={styles.dpName}>
-                        <Avatar.Image size={32} source={require('../../assets/img/mydp.png')} />
-                        <Text style={styles.Name}>{userName}</Text>
+                        <Avatar.Image size={40} source={require('../../assets/img/Harry.png')} />
+                        <Text style={styles.Name}>Hobart Romain Alex</Text>
                     </View>
+                    <Pressable onPress={() =>
+                        // console.log('her bhai')
+                        <SignOut />
+                    }>
+                        {/* <Avatar.Text size={28} label="!" /> */}
+                        <Icon name="ellipsis-v" size={18} color="grey" style={styles.optionIcon} />
 
-                    <Text>{post.title}</Text>
-                    <Text>{post.description}</Text>
-                </Card>
-            ))}
+
+                    </Pressable>
+                </View>
+                <Card.Content>
+                    <Text variant="titleLarge" style={styles.caption}>
+                        Lately, it feels like I've been in a never-ending tango with this stubborn bug! The constant sniffles, sneezing symphonies, and feeling like a marathon runner with a cough have been my daily companions. Slowly pacing through each day, holding out hope for the day this bug decides to bid adieu! 🤒🌧️ </Text>
+                </Card.Content>
+                <View style={styles.ImageBox}>
+                    <Card.Cover source={{ uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzJRDYPQYpItOt9krno_-3JLQ32qQMDfEwUQ&usqp=CAU' }} style={styles.Image} />
+                </View>
+                <Card.Actions >
+                    <View style={styles.Interactive}>
+                        {/* <Button style={styles.Button}>Like</Button> */}
+                        {/* <Iconll name="" size={} color: */}
+                        <Iconll name="like2" size={18} style={styles.reactionIcon} />
+                        <Icon name="comment-alt" size={18} style={styles.reactionIcon} />
+                        <Icon name="share-square" size={18} style={styles.reactionIcon} />
+
+                    </View>
+                </Card.Actions>
+            </Card>
+            <Card style={styles.Post} >
+                <View style={styles.postTop}>
+                    <View style={styles.dpName}>
+                        <Avatar.Image size={40} source={require('../../assets/img/Harry.png')} />
+                        <Text style={styles.Name}>Hobart Romain Alex</Text>
+                    </View>
+                    <Pressable onPress={() =>
+                        // console.log('her bhai')
+                        <SignOut />
+                    }>
+                        {/* <Avatar.Text size={28} label="!" /> */}
+                        <Icon name="ellipsis-v" size={18} color="grey" style={styles.optionIcon} />
+
+
+                    </Pressable>
+                </View>
+                <Card.Content>
+                    <Text variant="titleLarge" style={styles.caption}>
+                        Lately, it feels like I've been in a never-ending tango with this stubborn bug! The constant sniffles, sneezing symphonies, and feeling like a marathon runner with a cough have been my daily companions. Slowly pacing through each day, holding out hope for the day this bug decides to bid adieu! 🤒🌧️ </Text>
+                </Card.Content>
+                <View style={styles.ImageBox}>
+                    <Card.Cover source={{ uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzJRDYPQYpItOt9krno_-3JLQ32qQMDfEwUQ&usqp=CAU' }} style={styles.Image} />
+                </View>
+                <Card.Actions >
+                    <View style={styles.Interactive}>
+                        {/* <Button style={styles.Button}>Like</Button> */}
+                        {/* <Iconll name="" size={} color: */}
+                        <Iconll name="like2" size={18} style={styles.reactionIcon} />
+                        <Icon name="comment-alt" size={18} style={styles.reactionIcon} />
+                        <Icon name="share-square" size={18} style={styles.reactionIcon} />
+
+                    </View>
+                </Card.Actions>
+            </Card>
+            <Card style={styles.Post} >
+                <View style={styles.postTop}>
+                    <View style={styles.dpName}>
+                        <Avatar.Image size={40} source={require('../../assets/img/Harry.png')} />
+                        <Text style={styles.Name}>Hobart Romain Alex</Text>
+                    </View>
+                    <Pressable onPress={() =>
+                        // console.log('her bhai')
+                        <SignOut />
+                    }>
+                        {/* <Avatar.Text size={28} label="!" /> */}
+                        <Icon name="ellipsis-v" size={18} color="grey" style={styles.optionIcon} />
+
+
+                    </Pressable>
+                </View>
+                <Card.Content>
+                    <Text variant="titleLarge" style={styles.caption}>
+                        Lately, it feels like I've been in a never-ending tango with this stubborn bug! The constant sniffles, sneezing symphonies, and feeling like a marathon runner with a cough have been my daily companions. Slowly pacing through each day, holding out hope for the day this bug decides to bid adieu! 🤒🌧️ </Text>
+                </Card.Content>
+                <View style={styles.ImageBox}>
+                    <Card.Cover source={{ uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzJRDYPQYpItOt9krno_-3JLQ32qQMDfEwUQ&usqp=CAU' }} style={styles.Image} />
+                </View>
+                <Card.Actions >
+                    <View style={styles.Interactive}>
+                        {/* <Button style={styles.Button}>Like</Button> */}
+                        {/* <Iconll name="" size={} color: */}
+                        <Iconll name="like2" size={18} style={styles.reactionIcon} />
+                        <Icon name="comment-alt" size={18} style={styles.reactionIcon} />
+                        <Icon name="share-square" size={18} style={styles.reactionIcon} />
+
+                    </View>
+                </Card.Actions>
+            </Card>
         </ScrollView>
-    );
+
+    </>);
 }
 
+export default Post;
 const styles = StyleSheet.create({
     PostContainer: {
         width: '100%',
-        backgroundColor: 'white',
+        backgroundColor: '#B2BEB5',
+        padding: 5,
         flexDirection: 'column',
         justifyContent: 'center',
     },
     Post: {
-        padding: 10,
+        // padding: 10,
+        paddingBottom: 5,
+        paddingTop: 5,
         height: 'auto',
-        width: '100%',
-        backgroundColor: '#d9d9d9',
+        width: "100%",
+        // backgroundColor: '#d9d9d9',
+        // backgroundColor: 'red',
+        borderRadius: 0,
+        borderBottomWidth: 1,
+        // borderBottomColor: 'grey',
+        backgroundColor: '#F8F6F4',
         justifyContent: 'center',
-        marginTop: 5,
-        marginBottom: 5,
+        // marginTop: 5,
+        // marginBottom: 5,
+    },
+    postTop: {
+        height: 40,
+        marginBottom: 10,
+        // backgroundColor: 'red',
+        paddingLeft: 10,
+        paddingRight: 10,
+        justifyContent: 'space-between',
+        flexDirection: 'row',
     },
     dpName: {
-        width: '40%',
+        width: "auto",
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'space-between',
-        borderBottomWidth: 1,
-        borderBottomColor: 'red',
-        borderBottomLeftRadius: 20,
-        borderTopLeftRadius: 20,
+        // justifyContent: 'space-between',
+        // borderBottomWidth: 1,
+        // borderBottomColor: 'red',
+        // borderBottomLeftRadius: 20,
+        // borderTopLeftRadius: 20,
+    },
+    caption: {
+        // width: 100,
+        // backgroundColor: 'red',
+        textAlign: 'justify',
+        height: 'auto',
+        color: 'black',
+        // marginTop: 3,
+        marginBottom: 8,
     },
     Name: {
         color: 'black',
+        fontWeight: 'bold',
+        textAlign: 'left',
+        fontSize: 16,
+        paddingLeft: 10,
+        // backgroundColor: 'red',
+        height: 30,
+        width: 'auto'
     },
     Interactive: {
         width: '100%',
+        paddingRight: 30,
+        paddingLeft: 30,
         // backgroundColor: 'red',
         flexDirection: 'row',
-        justifyContent: 'space-around',
+        justifyContent: 'space-between',
         alignItems: 'center',
         paddingHorizontal: 10,
         paddingVertical: 5,
     },
-
     container: {
         flex: 1,
         justifyContent: 'center',
@@ -327,4 +281,20 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         padding: 10,
     },
-});
+    ImageBox: {
+        width: "100%",
+        // backgroundColor: 'red',
+        justifyContent: 'center',
+        paddingRight: 15,
+        paddingLeft: 15,
+    },
+    optionIcon: {
+        paddingTop: 10,
+        // backgroundColor: 'red',
+        width: 15
+    },
+    reactionIcon: {
+        color: "grey",
+    }
+
+})
