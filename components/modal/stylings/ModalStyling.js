@@ -5,18 +5,33 @@ const styles = StyleSheet.create({
     Wscreen: {
         height: "100%",
         width: '100%',
-        backgroundColor: 'white'
+        backgroundColor: '#B2BEB5'
     },
     dpBox: {
-        height: '35%',
-        // width: "50%",
-        backgroundColor: 'blue',
+        height: '25%',
         backgroundColor: '#318CE7',
         borderBottomLeftRadius: 25,
         borderBottomRightRadius: 25,
         justifyContent: 'center',
         alignItems: 'center',
         flexDirection: 'column'
+    },
+
+    ham: {
+        height: 40,
+        width: 40,
+        borderRadius: 15,
+        position: "absolute",
+        right: 20,
+        top: 10,
+        backgroundColor: 'white',
+        zIndex: 1,
+        alignItems: 'center',
+        justifyContent: 'center'
+
+    },
+    postContainer: {
+        // padding: 10,
     },
     fullName: {
         fontSize: 24,
@@ -32,25 +47,37 @@ const styles = StyleSheet.create({
         // backgroundColor: 'pink',
         fontSize: 18,
         // alignItems:'center'
-        justifyContent: 'space-around',
+        // justifyContent: 'space-around',
         alignContent: "flex-start"
     },
     values: {
         // backgroundColor: 'maroon',
         // justifyContent: 'center',
-        justifyContent: 'space-around',
+        // justifyContent: 'space-around',
         alignContent: 'flex-start',
-        paddingLeft: 2
+        paddingLeft: 2,
     },
     detailBox: {
-        height: '70%',
+        height: "70%",
         flexDirection: 'row',
-        // backgroundColor: 'red'
+        // backgroundColor: 'red',
+        padding: 10,
     }
     ,
+    keyTitle: {
+        color: 'white',
+        marginTop: 15,
+        fontSize: 16
+    },
+
+    Mainbox: {
+        backgroundColor: 'grey',
+        height: "100%",
+    },
+
     editButton: {
-        // backgroundColor:'orange',
-        marginTop: 30
+        // backgroundColor: 'orange',
+        // marginTop: 30
     },
     modalBtn: {
         margin: 10,
@@ -89,7 +116,8 @@ const styles = StyleSheet.create({
     pswBtn: {
         backgroundColor: 'red',
         borderRadius: 15,
-    }
+    },
+
 
 
 }
