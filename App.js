@@ -1,23 +1,23 @@
-import { View, Text } from 'react-native'
-import React from 'react'
-import Navigation from './navigation/Navigation'
-import ProfileScreen from './screens/Profile/ProfileScreen'
-import { Provider } from 'react-native-paper'
-import Post from './screens/Post/Post'
-import News from './screens/News/News'
-import Upload from './screens/Upload/Upload'
+import { View } from 'react-native';
+import { Provider } from 'react-native-paper';
+import ViewDetails from './screens/Details/ViewDetails';
+
+
 const App = () => {
     return (
         <Provider>
             <View>
                 {/* <News /> */}
                 {/* <ProfileScreen /> */}
+                {/* <Comment /> */}
                 {/* <Post /> */}
                 {/* <Navigation /> */}
-                <Upload />
+                {/* <Upload /> */}
+                {/* <ViewDetails /> */}
+                {/* <ChangePsw /> */}
+                <ViewDetails />
             </View>
         </Provider>
     )
 }
-
 export default App

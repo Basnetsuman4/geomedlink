@@ -17,7 +17,9 @@ const DetailModal = () => {
         width: '80%',
         minHeight: '30%',
         alignSelf: 'center',
-        borderRadius: 20
+        borderRadius: 20,
+
+
     };
 
 

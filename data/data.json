@@ -1,24 +1,25 @@
 {
     "data": [
         {
-            "date": "2023-11-08T12:59:28.000Z",
             "id": 1,
-            "is_shared": false,
-            "likes": 1,
-            "photo": null,
-            "post": "This is health Post",
-            "reported_spam": 1,
-            "sharedPID": null,
-            "user": {
-                "address": "Nayabazar",
-                "email": "malishamaharjan2001@gmail.com",
-                "id": 1,
-                "password": "Organization123",
-                "phoneNumber": "9808260899",
-                "type": 2,
-                "userName": "organization1"
-            }
+            "defaultPicture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRaEJySErNdv7crGpY4b9bzLZvmb4ZPfGnYFg&usqp=CAU",
+            "username": "Harry",
+            "caption": "I've been experiencing presents as a discomfort or pressure in the central part of my chest, right behind the breastbone. It's not an intense pain, more like a tightness or squeezing sensation. It tends to come and go, and I've noticed it doesn't necessarily coincide with physical activity.",
+            "postImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQCeIq_Yy64eaTi1V8u5dlUgdke6E2qsmB4A&usqp=CAU"
+        },
+        {
+            "id": 2,
+            "defaultPicture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmc9-VHMCSLyZyZ3ZQWGskufQwcv3YTJZRDQ&usqp=CAU",
+            "username": "Tony",
+            "caption": "I've been having some visual disturbances recently. Specifically, I've noticed discomfort or a sensation of glare when exposed to certain types of light. Even in moderate lighting conditions, it feels quite intense and uncomfortable.",
+            "postImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH_eRrD7AEPAsQUXBTbYEZZaOUvI1aR3fx8g&usqp=CAU"
+        },
+        {
+            "id": 3,
+            "defaultPicture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFwioYPXEAqCAbIUMr8sbJCDrvgZlXuF4fRw&usqp=CAU",
+            "username": "Lynda",
+            "caption": "I've been having some issues with my stomach lately. I've been experiencing recurring discomfort in my abdominal area. It's not always severe, but it's like a cramping sensation that comes and goes. Additionally, my bowel movements have been irregular. I've been alternating between episodes of constipation and diarrhea, and it's been quite unpredictable. Sometimes I feel bloated or overly full even after small meals.",
+            "postImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRR_E4t4Ib9tBeprbjrrVkUSaCGNMnaPxEBfA&usqp=CAU"
         }
     ]
-     
 }

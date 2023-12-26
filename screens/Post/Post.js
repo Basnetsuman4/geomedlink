@@ -49,11 +49,18 @@
 
 //     </>);
 // }
+
+
+
+/****************************************************************** */
+
+
+
 import React, { useState } from 'react';
-import { View, Text, ScrollView, Pressable, StyleSheet, Modal } from 'react-native';
-import { Card, Avatar } from 'react-native-paper';
-import Icon from 'react-native-vector-icons/FontAwesome5';
+import { Modal, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Avatar, Card } from 'react-native-paper';
 import Iconll from 'react-native-vector-icons/AntDesign';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 import Report from '../../components/modal/Report';
 
 const Post = () => {
@@ -63,17 +70,20 @@ const Post = () => {
         setReportModalVisible(!reportModalVisible);
     };
 
+
+
     return (
         <>
             <ScrollView contentContainerStyle={styles.PostContainer}>
+
                 <Card style={styles.Post}>
                     <View style={styles.postTop}>
                         <View style={styles.dpName}>
-                            <Avatar.Image size={40} source={require('../../assets/img/Harry.png')} />
+                            <Avatar.Image size={40} source={require('../../assets/img/hobert.webp')} />
                             <Text style={styles.Name}>Hobart Romain Alex</Text>
                         </View>
                         <Pressable onPress={toggleReportModal} style={styles.optionIcon}>
-                            <Icon name="ellipsis-v" size={18} color="grey" />
+                            <Icon name="exclamation-triangle" size={18} color="grey" />
                         </Pressable>
                     </View>
                     <Card.Content>
@@ -94,7 +104,63 @@ const Post = () => {
                         </View>
                     </Card.Actions>
                 </Card>
-                <Modal visible={reportModalVisible} transparent animationType="slide">
+                <Card style={styles.Post}>
+                    <View style={styles.postTop}>
+                        <View style={styles.dpName}>
+                            <Avatar.Image size={40} source={require('../../assets/img/hobert.webp')} />
+                            <Text style={styles.Name}>Hobart Romain Alex</Text>
+                        </View>
+                        <Pressable onPress={toggleReportModal} style={styles.optionIcon}>
+                            <Icon name="exclamation-triangle" size={18} color="grey" />
+                        </Pressable>
+                    </View>
+                    <Card.Content>
+                        <Text variant="titleLarge" style={styles.caption}>
+                            Lately, it feels like I've been in a never-ending tango with this stubborn bug! The constant sniffles, sneezing symphonies, and feeling like a marathon runner with a cough have been my daily companions. Slowly pacing through each day, holding out hope for the day this bug decides to bid adieu! 🤒🌧️ </Text>
+                    </Card.Content>
+                    <View style={styles.ImageBox}>
+                        <Card.Cover source={{ uri: 'https://domf5oio6qrcr.cloudfront.net/medialibrary/12206/0765ea29-21c6-49b9-8e11-f19b84b8069a.jpg' }} style={styles.Image} />
+                    </View>
+                    <Card.Actions >
+                        <View style={styles.Interactive}>
+                            {/* <Button style={styles.Button}>Like</Button> */}
+                            {/* <Iconll name="" size={} color: */}
+                            <Iconll name="like2" size={18} style={styles.reactionIcon} />
+                            <Icon name="comment-alt" size={18} style={styles.reactionIcon} />
+                            <Icon name="share-square" size={18} style={styles.reactionIcon} />
+
+                        </View>
+                    </Card.Actions>
+                </Card>
+                <Card style={styles.Post}>
+                    <View style={styles.postTop}>
+                        <View style={styles.dpName}>
+                            <Avatar.Image size={40} source={require('../../assets/img/hobert.webp')} />
+                            <Text style={styles.Name}>Hobart Romain Alex</Text>
+                        </View>
+                        <Pressable onPress={toggleReportModal} style={styles.optionIcon}>
+                            <Icon name="exclamation-triangle" size={18} color="grey" />
+                        </Pressable>
+                    </View>
+                    <Card.Content>
+                        <Text variant="titleLarge" style={styles.caption}>
+                            Lately, it feels like I've been in a never-ending tango with this stubborn bug! The constant sniffles, sneezing symphonies, and feeling like a marathon runner with a cough have been my daily companions. Slowly pacing through each day, holding out hope for the day this bug decides to bid adieu! 🤒🌧️ </Text>
+                    </Card.Content>
+                    <View style={styles.ImageBox}>
+                        <Card.Cover source={{ uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzJRDYPQYpItOt9krno_-3JLQ32qQMDfEwUQ&usqp=CAU' }} style={styles.Image} />
+                    </View>
+                    <Card.Actions >
+                        <View style={styles.Interactive}>
+                            {/* <Button style={styles.Button}>Like</Button> */}
+                            {/* <Iconll name="" size={} color: */}
+                            <Iconll name="like2" size={18} style={styles.reactionIcon} />
+                            <Icon name="comment-alt" size={18} style={styles.reactionIcon} />
+                            <Icon name="share-square" size={18} style={styles.reactionIcon} />
+
+                        </View>
+                    </Card.Actions>
+                </Card>
+                <Modal visible={reportModalVisible} transparent >
                     <Report visible={reportModalVisible} hideModal={toggleReportModal} />
                 </Modal>
             </ScrollView>
@@ -206,84 +272,3 @@ const styles = StyleSheet.create({
     }
 
 })
-
-
-
-
-
-
-
-
-
-// import React, { useState, useEffect, useRef } from 'react';
-// import { Text, View, ScrollView, StyleSheet } from 'react-native';
-// import { Card, Avatar } from 'react-native-paper';
-// import axios from 'axios';
-
-// export default function Post() {
-//     const [postdata, setPostData] = useState([]);
-//     const [userName, setUserName] = useState('Dummy');
-//     const [pageNumber, setPageNumber] = useState(1);
-//     const scrollViewRef = useRef(null);
-
-//     useEffect(() => {
-//         getData();
-//         fetchUserName();
-//     }, []);
-
-//     const BaseUrl = `http://localhost:8000/data?page=${pageNumber}&limit=10`;
-
-//     // function getData() {
-//     //     axios.get(BaseUrl)
-//     //         .then(response => {
-//     //             setPostData(prevData => [...prevData, ...response.data]);
-//     //         })
-//     //         .catch(error => {
-//     //             console.error('Error fetching data:', error);
-//     //         });
-//     // }
-
-//     // function fetchUserName() {
-//     //     axios.get('https://api.example.com/user')
-//     //         .then(response => {
-//     //             const userFirstName = response.data.firstName;
-//     //             setUserName(userFirstName);
-//     //         })
-//     //         .catch(error => {
-//     //             console.error('Error fetching user data:', error);
-//     //         });
-//     // }
-
-//     const handleScroll = (event) => {
-//         const { layoutMeasurement, contentOffset, contentSize } = event.nativeEvent;
-//         const paddingToBottom = 20;
-//         if (layoutMeasurement.height + contentOffset.y >= contentSize.height - paddingToBottom) {
-//             setPageNumber(prevPageNumber => prevPageNumber + 1);
-//             getData();
-//         }
-//     };
-
-//     return (
-//         <ScrollView
-//             ref={scrollViewRef}
-//             contentContainerStyle={styles.PostContainer}
-//             onScroll={handleScroll}
-//             scrollEventThrottle={16}
-//         >
-//             {postdata.map((post, index) => (
-//                 <Card key={index} style={styles.Post}>
-//                     <View style={styles.dpName}>
-//                         <Avatar.Image size={32} source={require('../../assets/img/mydp.png')} />
-//                         <Text style={styles.Name}>
-//                             \jzlkx
-//                             {/* {userName} */}
-//                         </Text>
-//                     </View>
-
-//                     {/* <Text>{post.title}</Text>
-//                     <Text>{post.description}</Text> */}
-//                 </Card>
-//             ))}
-//         </ScrollView>
-//     );
-// }

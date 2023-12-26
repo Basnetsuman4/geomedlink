@@ -5,18 +5,18 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import Iconll from 'react-native-vector-icons/AntDesign';
 import Iconlll from 'react-native-vector-icons/Octicons';
 import axios from 'axios';
+import DocumentPicker from 'react-native-document-picker';
 import Report from '../../components/modal/Report';
 
 const Comment = () => {
 
+    const [selectedDocument, setSelectedDocument] = useState(null);
 
     //State to handle the repost post
     const [reportModalVisible, setReportModalVisible] = useState(false);
     const toggleReportModal = () => {
         setReportModalVisible(!reportModalVisible);
     };
-
-
 
     // State to hold the comment
     const [comment, setComment] = useState('');
@@ -42,22 +42,47 @@ const Comment = () => {
 
 
     // Function to fetch comments from the API
-    const fetchComments = async () => {
+    // const fetchComments = async () => {
+    //     try {
+    //         // Replace 'COMMENT_API_ENDPOINT' with your actual API endpoint
+    //         const response = await axios.get('COMMENT_API_ENDPOINT');
+    //         // Assuming the response data is an array of comments
+    //         setComments(response.data);
+    //     } catch (error) {
+    //         console.error('Error fetching comments:', error);
+    //     }
+    // };
+
+    // useEffect(() => {
+    //     // Fetch comments when the component mounts
+    //     fetchComments();
+    // }, []);
+
+
+    /*************************************************************** */
+    const pickDocument = async () => {
         try {
-            // Replace 'COMMENT_API_ENDPOINT' with your actual API endpoint
-            const response = await axios.get('COMMENT_API_ENDPOINT');
-            // Assuming the response data is an array of comments
-            setComments(response.data);
-        } catch (error) {
-            console.error('Error fetching comments:', error);
+            const res = await DocumentPicker.pick({
+                type: [DocumentPicker.types.images], // Set to images for image types only
+            });
+
+            console.log('Document picked:', res);
+
+            // Check if the picked document type is an image
+            if (res && res) {
+                setSelectedDocument(res.uri);
+            } else {
+                console.log('Selected document is not an image.');
+                setSelectedDocument(null);
+            }
+        } catch (err) {
+            if (DocumentPicker.isCancel(err)) {
+                console.log('Document picking cancelled');
+            } else {
+                console.error('Error picking document:', err);
+            }
         }
     };
-
-    useEffect(() => {
-        // Fetch comments when the component mounts
-        fetchComments();
-    }, []);
-
 
 
 
@@ -114,10 +139,25 @@ const Comment = () => {
                         // onChangeText={text => setComment(text)} // Update the comment state
 
                         />
+                        {/* Display the selected document */}
+                        <View style={{ backgroundColor: 'red' }}>
+                            {selectedDocument && (
+                                <View style={styles.selectedDocumentContainer}>
+                                    {/* Display the selected document as an image */}
+                                    <Image source={{ uri: selectedDocument }} style={styles.selectedImage} />
+                                </View>
+                            )}
+                        </View>
                     </View>
                     <View style={styles.CommentAction}>
-                        <Iconll name="camerao" size={18} style={styles.reactionIcon} />
-                        <Pressable onPress={postComment} style={styles.PostCmnt}>
+                        {/* <Iconll name="camerao" size={18} style={styles.reactionIcon} onPress={pickDocument} /> */}
+                        <Pressable
+                            onPress={() =>
+                                postComment
+                                // console.log('Post Pressed')
+                            }
+
+                            style={styles.PostCmnt}>
                             <Text style={{ fontWeight: 'bold' }}>Post</Text>
                         </Pressable>
                     </View>
@@ -126,19 +166,22 @@ const Comment = () => {
 
 
                 {/*-----Static comment that is already made */}
-                <View style={styles.CommentBox}>
+                {/* <View style={styles.CommentBox}>
                     <View style={styles.cmnt}>
                         <Avatar.Image size={30} source={require('../../assets/img/hobert.webp')} />
-                        <Text style={styles.ipComment}>
-                            This is the comment related to this post
-                        </Text>
+                        <View>
+                            <Text style={styles.Name}>Hobart Romain Alex</Text>
+                            <Text style={styles.ipComment}>
+                                This is the comment related to this post
+                            </Text>
+                        </View>
                     </View>
                     <View style={styles.CommentAction}>
-                        <Pressable onPress={() => console.log('Post  !!!!!')} style={styles.PostCmnt}>
+                        <Pressable onPress={() => console.log('Report Triggered  !!!!!')} style={styles.PostCmnt}>
                             <Text style={{ fontWeight: 'bold' }}>Report Comment</Text>
                         </Pressable>
                     </View>
-                </View>
+                </View> */}
 
 
 
@@ -290,6 +333,16 @@ const styles = StyleSheet.create({
         paddingTop: 10
 
     },
+    selectedDocumentContainer: {
+        width: 100,
+        height: 100,
+    },
+    selectedImage: {
+        flex: 1,
+        width: "100%",
+        // height: undefined,
+        resizeMode: 'cover',
+    },
     cmnt: {
         // backgroundColor: "aqua",
         display: 'flex',
@@ -301,14 +354,13 @@ const styles = StyleSheet.create({
     ipComment: {
         backgroundColor: 'transparent',
         width: "85%",
-        fontSize: 14
+        fontSize: 14,
     },
     CommentAction: {
         height: 40,
-        display: 'flex',
+        // display: 'flex',
         flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: "space-around",
+        justifyContent: "flex-end",
         paddingTop: 5,
 
 
@@ -316,7 +368,9 @@ const styles = StyleSheet.create({
     },
     PostCmnt: {
         // backgroundColor: "aqua",
-        width: 'auto',
+        width: 90,
+        justifyContent: "center",
+        alignItems: 'center'
 
     }
 })
